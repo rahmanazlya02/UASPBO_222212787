@@ -9,7 +9,7 @@ import uas_222212787.DAOimplement.ImplementDAO_User;
 import uas_222212787.Model.User;
 import uas_222212787.View.LoginPanel;
 import uas_222212787.View.MainFrame;
-import uas_222212787.View.HomepagePanel;
+import uas_222212787.View.HomePanel;
 import uas_222212787.DAOinterface.DAO_User;
 
 /**

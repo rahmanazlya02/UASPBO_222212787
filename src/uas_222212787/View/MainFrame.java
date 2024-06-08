@@ -139,7 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void homeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeMenuActionPerformed
         // TODO add your handling code here:
         if (isLoggedIn) {
-            contentScrollPane.setViewportView(new HomepagePanel());
+            contentScrollPane.setViewportView(new HomePanel());
         } else {
             JOptionPane.showMessageDialog(this, "Silahkan Login dahulu!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -148,7 +148,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void backHomeMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backHomeMenuItemActionPerformed
         // TODO add your handling code here:
         if (isLoggedIn) {
-            contentScrollPane.setViewportView(new HomepagePanel());
+            contentScrollPane.setViewportView(new HomePanel());
         } else {
             JOptionPane.showMessageDialog(this, "Silahkan Login dahulu!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
