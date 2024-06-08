@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import uas_222212787.DAOimplement.ImplDAO_mahasiswa;
-import uas_222212787.DAOimplement.ImplDAO_nilai;
+import uas_222212787.DAOimplement.ImplDAO_Mahasiswa;
+import uas_222212787.DAOimplement.ImplDAO_Nilai;
 import uas_222212787.Model.Model_Nilai;
 import uas_222212787.Model.Model_Mahasiswa;
 import uas_222212787.Model.Tabel_Model_Nilai;
@@ -36,11 +36,11 @@ public class Controller_Nilai {
     
     public Controller_Nilai(NilaiPanel frame_nilai) {
         this.frame_nilai = frame_nilai;
-        implement_nilai = new ImplDAO_nilai();
+        implement_nilai = new ImplDAO_Nilai();
         listNilai = implement_nilai.getAll();
         
         // Mengambil semua data mahasiswa
-        ImplDAO_mahasiswa daoMahasiswa = new ImplDAO_mahasiswa();
+        ImplDAO_Mahasiswa daoMahasiswa = new ImplDAO_Mahasiswa();
         listMahasiswa = daoMahasiswa.getAll();
         
         // Memanggil metode untuk mengisi tabel nilai saat aplikasi dimulai
@@ -188,7 +188,7 @@ public class Controller_Nilai {
     }
 
    public void isiTableNilai() {
-        ImplDAO_mahasiswa daoMahasiswa = new ImplDAO_mahasiswa();
+        ImplDAO_Mahasiswa daoMahasiswa = new ImplDAO_Mahasiswa();
         List<Model_Mahasiswa> mahasiswaList = daoMahasiswa.getAll();
         
         // Buat objek untuk menyimpan data nilai
@@ -266,7 +266,7 @@ public class Controller_Nilai {
 
     public void isiTableCariNama() {
         listNilai = implement_nilai.getCariNama(frame_nilai.getTxtCariData().getText());
-        ImplDAO_mahasiswa daoMahasiswa = new ImplDAO_mahasiswa();
+        ImplDAO_Mahasiswa daoMahasiswa = new ImplDAO_Mahasiswa();
         List<Model_Mahasiswa> mahasiswaList = daoMahasiswa.getAll();
 
         // Tambahkan data mahasiswa ke list nilai yang ditemukan

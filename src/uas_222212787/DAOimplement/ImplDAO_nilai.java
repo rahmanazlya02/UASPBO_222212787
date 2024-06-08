@@ -19,7 +19,7 @@ import uas_222212787.DAOinterface.DAO_Nilai;
  *
  * @author Nazlya
  */
-public class ImplDAO_nilai implements DAO_Nilai {
+public class ImplDAO_Nilai implements DAO_Nilai {
     Connection conn;
    
     final String insert = "INSERT INTO nilai (nim, namaMhs, kementerian, kinerja, kehadiran, kreativitas, nilaiAkhir, katNilai) "
@@ -29,8 +29,8 @@ public class ImplDAO_nilai implements DAO_Nilai {
     final String select = "SELECT m.nim, m.namaMhs, m.kementerian, "
             + "n.kinerja, n.kehadiran, n.kreativitas, n.nilaiAkhir, n.katNilai "
             + "FROM mahasiswa m JOIN nilai n ON m.nim = n.nim;";
-    final String carinama = "SELECT n.*, m.namaMhs, m.kementerian FROM nilai n JOIN mahasiswa m ON n.nim = m.nim WHERE m.namaMhs LIKE ?;";
-    public ImplDAO_nilai() {
+    final String carinama = "SELECT n.*, m.namaMhs, m.kementerian FROM nilai n JOIN mahasiswa m ON n.nim = m.nim WHERE m.namaMhs LIKE ?";
+    public ImplDAO_Nilai() {
         conn = Connection_db.getConnection();
     }
     
@@ -112,7 +112,7 @@ public class ImplDAO_nilai implements DAO_Nilai {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImplDAO_nilai.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplDAO_Nilai.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listNilai;
     }
