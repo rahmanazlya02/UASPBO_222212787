@@ -2,25 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uas_222212787.DAO;
+package uas_222212787.DAOimplement;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import uas_222212787.DAOimplement.Impl_User;
 import uas_222212787.Model.User;
-import uas_222212787.Connection.Connection_mahasiswa;
+import uas_222212787.Connection.Connection_db;
+import uas_222212787.DAOinterface.DAO_User;
 
 /**
  *
  * @author Nazlya
  */
-public class DAO_user implements Impl_User {
+public class ImplDAO_user implements DAO_User {
     @Override
     public User getUser(String username) {
         User user = null;
-        try (Connection connection = Connection_mahasiswa.getConnection()) {
+        try (Connection connection = Connection_db.getConnection()) {
             String query = "SELECT * FROM user WHERE username=?";
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setString(1, username);
@@ -40,7 +40,7 @@ public class DAO_user implements Impl_User {
 
 @Override
 public void insert(User user) {
-    try (Connection connection = Connection_mahasiswa.getConnection()) {
+    try (Connection connection = Connection_db.getConnection()) {
         String query = "INSERT INTO user (username, password) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getUsername());

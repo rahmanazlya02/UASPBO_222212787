@@ -10,15 +10,15 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import uas_222212787.DAO.DAO_mahasiswa;
-import uas_222212787.DAO.DAO_nilai;
-import uas_222212787.DAOimplement.Impl_Nilai;
-import uas_222212787.DAOimplement.Implement_mahasiswa;
+import uas_222212787.DAOimplement.ImplDAO_mahasiswa;
+import uas_222212787.DAOimplement.ImplDAO_nilai;
 import uas_222212787.Model.Model_Mahasiswa;
 import uas_222212787.Model.Model_Nilai;
 import uas_222212787.Model.Tabel_Model_Mahasiswa;
 import uas_222212787.View.EntriPanel;
 import uas_222212787.View.MainFrame;
+import uas_222212787.DAOinterface.DAO_Nilai;
+import uas_222212787.DAOinterface.DAO_mahasiswa;
 
 /**
  *
@@ -26,14 +26,14 @@ import uas_222212787.View.MainFrame;
  */
 public class Controller_Mahasiswa {
     EntriPanel frame_mahasiswa;
-    Implement_mahasiswa implement_mahasiswa;
-    Impl_Nilai implement_nilai;
+    DAO_mahasiswa implement_mahasiswa;
+    DAO_Nilai implement_nilai;
     java.util.List<Model_Mahasiswa> listMhs;
     
     public Controller_Mahasiswa(EntriPanel frame_mahasiswa) {
         this.frame_mahasiswa = frame_mahasiswa;
-        implement_mahasiswa = new DAO_mahasiswa();
-        implement_nilai = new DAO_nilai();
+        implement_mahasiswa = new ImplDAO_mahasiswa();
+        implement_nilai = new ImplDAO_nilai();
         listMhs = implement_mahasiswa.getAll();
     }
     
@@ -223,7 +223,7 @@ public class Controller_Mahasiswa {
         // Mengambil NIM dari field
         String nim = frame_mahasiswa.getNimTextField().getText().trim();
         implement_mahasiswa.delete(nim);
-        // Memanggil metode deleteByNim dari DAO_nilai
+        // Memanggil metode deleteByNim dari ImplDAO_nilai
         implement_nilai.deleteByNim(nim);
         
         JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");

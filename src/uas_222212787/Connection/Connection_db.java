@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Nazlya
  */
-public class Connection_mahasiswa {
+public class Connection_db {
     public static Connection getConnection() {
         try{
             Class.forName("org.sqlite.JDBC");

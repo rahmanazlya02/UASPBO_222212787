@@ -15,13 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import uas_222212787.DAO.DAO_mahasiswa;
-import uas_222212787.DAO.DAO_nilai;
-import uas_222212787.DAOimplement.Impl_Nilai;
+import uas_222212787.DAOimplement.ImplDAO_mahasiswa;
+import uas_222212787.DAOimplement.ImplDAO_nilai;
 import uas_222212787.Model.Model_Nilai;
 import uas_222212787.Model.Model_Mahasiswa;
 import uas_222212787.Model.Tabel_Model_Nilai;
 import uas_222212787.View.NilaiPanel;
+import uas_222212787.DAOinterface.DAO_Nilai;
 
 /**
  *
@@ -29,18 +29,18 @@ import uas_222212787.View.NilaiPanel;
  */
 public class Controller_Nilai {
     NilaiPanel frame_nilai;
-    Impl_Nilai implement_nilai;
+    DAO_Nilai implement_nilai;
     List<Model_Nilai> listNilai;
     List<Model_Mahasiswa> listMahasiswa;
     Model_Mahasiswa selectedMahasiswa; // menyimpan mahasiswa yang dipilih
     
     public Controller_Nilai(NilaiPanel frame_nilai) {
         this.frame_nilai = frame_nilai;
-        implement_nilai = new DAO_nilai();
+        implement_nilai = new ImplDAO_nilai();
         listNilai = implement_nilai.getAll();
         
         // Mengambil semua data mahasiswa
-        DAO_mahasiswa daoMahasiswa = new DAO_mahasiswa();
+        ImplDAO_mahasiswa daoMahasiswa = new ImplDAO_mahasiswa();
         listMahasiswa = daoMahasiswa.getAll();
         
         // Memanggil metode untuk mengisi tabel nilai saat aplikasi dimulai
@@ -188,7 +188,7 @@ public class Controller_Nilai {
     }
 
    public void isiTableNilai() {
-        DAO_mahasiswa daoMahasiswa = new DAO_mahasiswa();
+        ImplDAO_mahasiswa daoMahasiswa = new ImplDAO_mahasiswa();
         List<Model_Mahasiswa> mahasiswaList = daoMahasiswa.getAll();
         
         // Buat objek untuk menyimpan data nilai
@@ -266,7 +266,7 @@ public class Controller_Nilai {
 
     public void isiTableCariNama() {
         listNilai = implement_nilai.getCariNama(frame_nilai.getTxtCariData().getText());
-        DAO_mahasiswa daoMahasiswa = new DAO_mahasiswa();
+        ImplDAO_mahasiswa daoMahasiswa = new ImplDAO_mahasiswa();
         List<Model_Mahasiswa> mahasiswaList = daoMahasiswa.getAll();
 
         // Tambahkan data mahasiswa ke list nilai yang ditemukan

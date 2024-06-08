@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uas_222212787.DAO;
-import uas_222212787.Connection.Connection_mahasiswa;
-import uas_222212787.DAOimplement.Implement_mahasiswa;
+package uas_222212787.DAOimplement;
+import uas_222212787.Connection.Connection_db;
 import uas_222212787.Model.Model_Mahasiswa;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,13 +11,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uas_222212787.DAOinterface.DAO_mahasiswa;
 
 
 /**
  *
  * @author Nazlya
  */
-public class DAO_mahasiswa implements Implement_mahasiswa{
+public class ImplDAO_mahasiswa implements DAO_mahasiswa{
     
     Connection conn;
     final String insert = "INSERT INTO mahasiswa (nim, namaMhs, gender, email, kementerian, alamat) "
@@ -31,8 +31,8 @@ public class DAO_mahasiswa implements Implement_mahasiswa{
     final String selectByNim = "SELECT * FROM mahasiswa WHERE nim=?;";  // Query baru untuk getByNim
 
     
-    public DAO_mahasiswa() {
-        conn = Connection_mahasiswa.getConnection();
+    public ImplDAO_mahasiswa() {
+        conn = Connection_db.getConnection();
     }
     
     @Override
@@ -122,7 +122,7 @@ public void delete(String nim) {
                 listMhs.add(a); // tambahkan objek ke daftar
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplDAO_mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return listMhs;
     }
@@ -146,7 +146,7 @@ public void delete(String nim) {
                 listMhs.add(a);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplDAO_mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return listMhs;
     }
@@ -168,7 +168,7 @@ public void delete(String nim) {
                 mahasiswa.setAlamat(rs.getString("alamat"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplDAO_mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mahasiswa;
     }

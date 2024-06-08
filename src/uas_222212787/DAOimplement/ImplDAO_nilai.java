@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uas_222212787.DAO;
-import uas_222212787.Connection.Connection_mahasiswa;
-import uas_222212787.DAOimplement.Impl_Nilai;
+package uas_222212787.DAOimplement;
+import uas_222212787.Connection.Connection_db;
 import uas_222212787.Model.Model_Nilai;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,11 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uas_222212787.DAOinterface.DAO_Nilai;
 /**
  *
  * @author Nazlya
  */
-public class DAO_nilai implements Impl_Nilai {
+public class ImplDAO_nilai implements DAO_Nilai {
     Connection conn;
    
     final String insert = "INSERT INTO nilai (nim, namaMhs, kementerian, kinerja, kehadiran, kreativitas, nilaiAkhir, katNilai) "
@@ -30,8 +30,8 @@ public class DAO_nilai implements Impl_Nilai {
             + "n.kinerja, n.kehadiran, n.kreativitas, n.nilaiAkhir, n.katNilai "
             + "FROM mahasiswa m JOIN nilai n ON m.nim = n.nim;";
     final String carinama = "SELECT n.*, m.namaMhs, m.kementerian FROM nilai n JOIN mahasiswa m ON n.nim = m.nim WHERE m.namaMhs LIKE ?;";
-    public DAO_nilai() {
-        conn = Connection_mahasiswa.getConnection();
+    public ImplDAO_nilai() {
+        conn = Connection_db.getConnection();
     }
     
     @Override
@@ -112,7 +112,7 @@ public class DAO_nilai implements Impl_Nilai {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_nilai.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplDAO_nilai.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listNilai;
     }

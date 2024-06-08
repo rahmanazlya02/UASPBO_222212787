@@ -21,7 +21,7 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     public MainFrame() {
-        setTitle("Aplikasi Penilaian Kerja Anggota UKM STIS Mengajar");
+        setTitle("APEKA SM");
         initComponents();
         contentScrollPane.setViewportView(new LoginPanel(contentScrollPane, this));
     }
