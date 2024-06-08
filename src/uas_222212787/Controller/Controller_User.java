@@ -5,11 +5,11 @@
 package uas_222212787.Controller;
 
 import javax.swing.*;
-import uas_222212787.DAOimplement.ImplDAO_User;
+import uas_222212787.DAOimplement.ImplementDAO_User;
 import uas_222212787.Model.User;
 import uas_222212787.View.LoginPanel;
 import uas_222212787.View.MainFrame;
-import uas_222212787.View.HomePanel;
+import uas_222212787.View.HomepagePanel;
 import uas_222212787.DAOinterface.DAO_User;
 
 /**
@@ -19,12 +19,12 @@ import uas_222212787.DAOinterface.DAO_User;
 public class Controller_User {
     private LoginPanel loginView;
     private MainFrame mainFrame;
-    private ImplDAO_User dao_user;
+    private ImplementDAO_User dao_user;
 
     public Controller_User(LoginPanel loginView, MainFrame mainFrame) {
         this.loginView = loginView;
         this.mainFrame = mainFrame;
-        this.dao_user = new ImplDAO_User();
+        this.dao_user = new ImplementDAO_User();
     }
 
     public void login() {

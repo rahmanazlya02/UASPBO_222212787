@@ -10,18 +10,18 @@ import javax.swing.JScrollPane;
  *
  * @author Nazlya
  */
-public class HomePanel extends javax.swing.JPanel {
+public class HomepagePanel extends javax.swing.JPanel {
     private JScrollPane contentScrollPane;
 
     /**
      * Creates new form homePanel
      */
-    public HomePanel() {
+    public HomepagePanel() {
         initComponents();
         this.contentScrollPane = contentScrollPane;
     }
     
-    HomePanel(JScrollPane contentScrollPane) {
+    HomepagePanel(JScrollPane contentScrollPane) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

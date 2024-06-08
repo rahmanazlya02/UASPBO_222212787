@@ -180,7 +180,7 @@ public class LoginPanel extends javax.swing.JPanel {
     public void showLoginSuccess() {
         mainFrame.setLoggedIn(true);  // Ensure this.mainFrame is not null
         JOptionPane.showMessageDialog(this, "Login successful!");
-        contentScrollPane.setViewportView(new HomePanel());
+        contentScrollPane.setViewportView(new HomepagePanel());
     }
     
     public void showLoginFailure() {

@@ -10,8 +10,8 @@ import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import uas_222212787.DAOimplement.ImplDAO_Mahasiswa;
-import uas_222212787.DAOimplement.ImplDAO_Nilai;
+import uas_222212787.DAOimplement.ImplementDAO_Mahasiswa;
+import uas_222212787.DAOimplement.ImplementDAO_Nilai;
 import uas_222212787.Model.Model_Mahasiswa;
 import uas_222212787.Model.Model_Nilai;
 import uas_222212787.Model.Tabel_Model_Mahasiswa;
@@ -32,8 +32,8 @@ public class Controller_Mahasiswa {
     
     public Controller_Mahasiswa(EntriPanel frame_mahasiswa) {
         this.frame_mahasiswa = frame_mahasiswa;
-        implement_mahasiswa = new ImplDAO_Mahasiswa();
-        implement_nilai = new ImplDAO_Nilai();
+        implement_mahasiswa = new ImplementDAO_Mahasiswa();
+        implement_nilai = new ImplementDAO_Nilai();
         listMhs = implement_mahasiswa.getAll();
     }
     
@@ -223,7 +223,7 @@ public class Controller_Mahasiswa {
         // Mengambil NIM dari field
         String nim = frame_mahasiswa.getNimTextField().getText().trim();
         implement_mahasiswa.delete(nim);
-        // Memanggil metode deleteByNim dari ImplDAO_Nilai
+        // Memanggil metode deleteByNim dari ImplementDAO_Nilai
         implement_nilai.deleteByNim(nim);
         
         JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");

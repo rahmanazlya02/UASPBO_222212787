@@ -18,7 +18,7 @@ import uas_222212787.DAOinterface.DAO_mahasiswa;
  *
  * @author Nazlya
  */
-public class ImplDAO_Mahasiswa implements DAO_mahasiswa{
+public class ImplementDAO_Mahasiswa implements DAO_mahasiswa{
     
     Connection conn;
     final String insert = "INSERT INTO mahasiswa (nim, namaMhs, gender, email, kementerian, alamat) "
@@ -31,7 +31,7 @@ public class ImplDAO_Mahasiswa implements DAO_mahasiswa{
     final String selectByNim = "SELECT * FROM mahasiswa WHERE nim=?;";  // Query baru untuk getByNim
 
     
-    public ImplDAO_Mahasiswa() {
+    public ImplementDAO_Mahasiswa() {
         conn = Connection_db.getConnection();
     }
     
@@ -122,7 +122,7 @@ public void delete(String nim) {
                 listMhs.add(a); // tambahkan objek ke daftar
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImplDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplementDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return listMhs;
     }
@@ -146,7 +146,7 @@ public void delete(String nim) {
                 listMhs.add(a);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImplDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplementDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return listMhs;
     }
@@ -168,7 +168,7 @@ public void delete(String nim) {
                 mahasiswa.setAlamat(rs.getString("alamat"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImplDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImplementDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mahasiswa;
     }

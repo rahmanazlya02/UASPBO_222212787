@@ -16,7 +16,7 @@ import uas_222212787.DAOinterface.DAO_User;
  *
  * @author Nazlya
  */
-public class ImplDAO_User implements DAO_User {
+public class ImplementDAO_User implements DAO_User {
     @Override
     public User getUser(String username) {
         User user = null;
