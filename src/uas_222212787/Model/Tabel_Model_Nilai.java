@@ -16,7 +16,8 @@ public class Tabel_Model_Nilai extends AbstractTableModel{
     List<Model_Nilai> listNilai;
     List<Model_Mahasiswa> listMahasiswa; // Tambahkan list mahasiswa
     
-    public Tabel_Model_Nilai(List<Model_Nilai> listNilai, List<Model_Mahasiswa> listMahasiswa) { // Tambahkan list mahasiswa pada konstruktor
+    // Tambahkan list mahasiswa pada konstruktor
+    public Tabel_Model_Nilai(List<Model_Nilai> listNilai, List<Model_Mahasiswa> listMahasiswa) { 
         this.listNilai = listNilai;
         this.listMahasiswa = listMahasiswa;
     }

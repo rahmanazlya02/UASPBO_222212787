@@ -5,10 +5,6 @@
 package uas_222212787.View;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import java.sql.*;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.*;
 import uas_222212787.Controller.Controller_User;
 
 /**
@@ -200,7 +196,4 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 
-    public void dispose() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
