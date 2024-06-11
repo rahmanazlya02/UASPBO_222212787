@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Nazlya
  */
-public interface DAO_Mahasiswaa {
+public interface DAO_Mahasiswa {
     public void insert(Model_Mahasiswa a);
     public void update(Model_Mahasiswa a);
     public void delete(String nim);
