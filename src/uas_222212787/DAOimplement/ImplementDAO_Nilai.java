@@ -30,6 +30,7 @@ public class ImplementDAO_Nilai implements DAO_Nilai {
             + "n.kinerja, n.kehadiran, n.kreativitas, n.nilaiAkhir, n.katNilai "
             + "FROM mahasiswa m JOIN nilai n ON m.nim = n.nim;";
     final String carinama = "SELECT n.*, m.namaMhs, m.kementerian FROM nilai n JOIN mahasiswa m ON n.nim = m.nim WHERE m.namaMhs LIKE ?";
+    
     public ImplementDAO_Nilai() {
         conn = Connection_db.getConnection();
     }

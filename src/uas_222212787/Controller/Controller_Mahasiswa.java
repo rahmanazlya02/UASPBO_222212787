@@ -18,7 +18,7 @@ import uas_222212787.Model.Tabel_Model_Mahasiswa;
 import uas_222212787.View.EntriPanel;
 import uas_222212787.View.MainFrame;
 import uas_222212787.DAOinterface.DAO_Nilai;
-import uas_222212787.DAOinterface.DAO_mahasiswa;
+import uas_222212787.DAOinterface.DAO_Mahasiswa;
 
 /**
  *
@@ -26,7 +26,7 @@ import uas_222212787.DAOinterface.DAO_mahasiswa;
  */
 public class Controller_Mahasiswa {
     EntriPanel frame_mahasiswa;
-    DAO_mahasiswa implement_mahasiswa;
+    DAO_Mahasiswa implement_mahasiswa;
     DAO_Nilai implement_nilai;
     java.util.List<Model_Mahasiswa> listMhs;
     
