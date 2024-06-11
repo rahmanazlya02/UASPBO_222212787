@@ -11,13 +11,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uas_222212787.DAOinterface.DAO_Mahasiswa;
+import uas_222212787.DAOinterface.DAO_Mahasiswaa;
 
 /**
  *
  * @author Nazlya
  */
-public class ImplementDAO_Mahasiswa implements DAO_Mahasiswa{
+public class ImplementDAO_Mahasiswa implements DAO_Mahasiswaa{
     
     Connection conn;
     final String insert = "INSERT INTO mahasiswa (nim, namaMhs, gender, email, kementerian, alamat) "
