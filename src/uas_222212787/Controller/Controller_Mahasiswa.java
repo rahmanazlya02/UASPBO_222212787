@@ -111,8 +111,8 @@ public class Controller_Mahasiswa {
                 return;
             }
 
-            if (!nim.matches("^[1-9][0-9]{8}$")) {
-                javax.swing.JOptionPane.showMessageDialog(frame_mahasiswa, "NIM harus terdiri dari 9 karakter angka 1-9.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            if (!nim.matches("^[0-9]{9}$")) {
+                javax.swing.JOptionPane.showMessageDialog(frame_mahasiswa, "NIM harus terdiri dari 9 karakter angka 0-9.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
