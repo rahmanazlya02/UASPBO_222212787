@@ -4,6 +4,14 @@
  */
 package uas_222212787.Controller;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -12,9 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import uas_222212787.DAOimplement.ImplementDAO_Mahasiswa;
 import uas_222212787.DAOimplement.ImplementDAO_Nilai;
 import uas_222212787.Model.Model_Nilai;
@@ -69,12 +79,68 @@ public class Controller_Nilai {
         }
         try {
             frame_nilai.printToCSV(selectedFile);
+            JOptionPane.showMessageDialog(frame_nilai, "Data sukses disimpan di " + selectedFile.getAbsolutePath());
         } catch (IOException ex) {
             ex.printStackTrace();
             frame_nilai.showMessage("Error printing to CSV: " + ex.getMessage());
         }
     }
 }
+    
+    // Fungsi untuk mengekspor data ke PDF
+    public void exportToPDF() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Simpan file");
+
+        int userSelection = fileChooser.showSaveDialog(frame_nilai);
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            String filePath = fileToSave.getAbsolutePath();
+            if (!filePath.toLowerCase().endsWith(".pdf")) {
+                fileToSave = new File(filePath + ".pdf");
+            }
+
+            Document document = new Document();
+            try {
+                PdfWriter.getInstance(document, new FileOutputStream(fileToSave));
+                document.open();
+
+                document.add(new Paragraph("Data Nilai Mahasiswa"));
+
+                JTable table = frame_nilai.getNilaiTable();
+                TableModel model = table.getModel();
+
+                PdfPTable pdfTable = new PdfPTable(model.getColumnCount());
+                pdfTable.setWidthPercentage(100);
+                pdfTable.setSpacingBefore(10f);
+                pdfTable.setSpacingAfter(10f);
+
+                // Menambahkan header tabel
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    PdfPCell cell = new PdfPCell(new Paragraph(model.getColumnName(i)));
+                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    pdfTable.addCell(cell);
+                }
+
+                // Menambahkan baris data
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    for (int j = 0; j < model.getColumnCount(); j++) {
+                        PdfPCell cell = new PdfPCell(new Paragraph(model.getValueAt(i, j).toString()));
+                        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                        pdfTable.addCell(cell);
+                    }
+                }
+
+                document.add(pdfTable);
+                document.close();
+                JOptionPane.showMessageDialog(frame_nilai, "Data sukses disimpan di " + fileToSave.getAbsolutePath());
+
+            } catch (DocumentException | IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(frame_nilai, "Error ekspor data ke PDF: " + e.getMessage());
+            }
+        }
+    }
     
     public void calculate() {
         try {

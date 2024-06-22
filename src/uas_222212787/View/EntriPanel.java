@@ -77,6 +77,7 @@ public class EntriPanel extends javax.swing.JPanel {
         txtCariData = new javax.swing.JTextField();
         cariButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
+        pdfButton = new javax.swing.JButton();
         judulLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(57, 167, 255));
@@ -316,6 +317,16 @@ public class EntriPanel extends javax.swing.JPanel {
             }
         });
 
+        pdfButton.setBackground(new java.awt.Color(255, 102, 102));
+        pdfButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        pdfButton.setForeground(new java.awt.Color(255, 255, 255));
+        pdfButton.setText("Export to PDF");
+        pdfButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pdfButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -331,7 +342,9 @@ public class EntriPanel extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(hapusButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(printButton))
+                                .addComponent(printButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pdfButton))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -360,7 +373,8 @@ public class EntriPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
@@ -453,6 +467,11 @@ public class EntriPanel extends javax.swing.JPanel {
         controller_mahasiswa.printToCSV();
     }//GEN-LAST:event_printButtonActionPerformed
 
+    private void pdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfButtonActionPerformed
+        // TODO add your handling code here:
+        controller_mahasiswa.exportToPDF();
+    }//GEN-LAST:event_pdfButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea alamatTextArea;
@@ -480,6 +499,7 @@ public class EntriPanel extends javax.swing.JPanel {
     private javax.swing.JTable mahasiswaTable;
     private javax.swing.JTextField namaTextField;
     private javax.swing.JTextField nimTextField;
+    private javax.swing.JButton pdfButton;
     private javax.swing.JRadioButton perempuanRadioButton;
     private javax.swing.JButton printButton;
     private javax.swing.JButton refreshButton;

@@ -84,6 +84,7 @@ public class NilaiPanel extends javax.swing.JPanel {
         txtCariData = new javax.swing.JTextField();
         cariButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
+        pdfButton = new javax.swing.JButton();
         judulLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(57, 167, 255));
@@ -350,6 +351,16 @@ public class NilaiPanel extends javax.swing.JPanel {
             }
         });
 
+        pdfButton.setBackground(new java.awt.Color(255, 102, 102));
+        pdfButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        pdfButton.setForeground(new java.awt.Color(255, 255, 255));
+        pdfButton.setText("Export to PDF");
+        pdfButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pdfButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -370,7 +381,10 @@ public class NilaiPanel extends javax.swing.JPanel {
                                 .addComponent(cariButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(refreshButton))
-                            .addComponent(printButton)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(printButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(pdfButton))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -388,7 +402,9 @@ public class NilaiPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(printButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pdfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
@@ -482,6 +498,11 @@ public class NilaiPanel extends javax.swing.JPanel {
         controller_nilai.calculate();
     }//GEN-LAST:event_CalculateButtonActionPerformed
 
+    private void pdfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfButtonActionPerformed
+        // TODO add your handling code here:
+        controller_nilai.exportToPDF();
+    }//GEN-LAST:event_pdfButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CalculateButton;
@@ -511,6 +532,7 @@ public class NilaiPanel extends javax.swing.JPanel {
     private javax.swing.JTextField nilaiAkhirTextField;
     private javax.swing.JTable nilaiTable;
     private javax.swing.JTextField nimTextField;
+    private javax.swing.JButton pdfButton;
     private javax.swing.JButton printButton;
     private javax.swing.JButton refreshButton;
     private javax.swing.JButton resetButton;
