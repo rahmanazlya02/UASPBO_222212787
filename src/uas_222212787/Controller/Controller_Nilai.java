@@ -105,7 +105,7 @@ public class Controller_Nilai {
                 PdfWriter.getInstance(document, new FileOutputStream(fileToSave));
                 document.open();
 
-                document.add(new Paragraph("Data Nilai Mahasiswa"));
+                document.add(new Paragraph("Data Nilai Anggota UKM STIS Mengajar"));
 
                 JTable table = frame_nilai.getNilaiTable();
                 TableModel model = table.getModel();

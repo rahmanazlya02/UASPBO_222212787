@@ -85,7 +85,7 @@ public class Controller_Mahasiswa {
                 PdfWriter.getInstance(document, new FileOutputStream(fileToSave));
                 document.open();
 
-                document.add(new Paragraph("Data Anggota"));
+                document.add(new Paragraph("Data Diri Anggota UKM STIS Mengajar"));
 
                 JTable table = frame_mahasiswa.getMahasiswaTable();
                 TableModel model = table.getModel();
