@@ -26,7 +26,7 @@ public class ImplementDAO_Mahasiswa implements DAO_Mahasiswa{
             + "WHERE nim=?;";
     final String delete = "DELETE FROM mahasiswa WHERE nim=?;";
     final String select = "SELECT * FROM mahasiswa;";
-    final String carinama = "SELECT * FROM mahasiswa WHERE namaMhs like ?;";
+    final String cari = "SELECT * FROM mahasiswa WHERE namaMhs LIKE ? OR nim LIKE ? OR kementerian LIKE ? OR gender LIKE ? OR email LIKE ? OR alamat LIKE ?";
     final String selectByNim = "SELECT * FROM mahasiswa WHERE nim=?;";  // Query baru untuk getByNim
 
     
@@ -127,28 +127,41 @@ public void delete(String nim) {
     }
     
     @Override
-    public java.util.List<Model_Mahasiswa> getCariNama(String namaMhs) {
-        java.util.List<Model_Mahasiswa> listMhs = null;
-        try {
-            listMhs = new ArrayList<Model_Mahasiswa>();
-            PreparedStatement stmt = conn.prepareStatement(carinama);
-            stmt.setString(1, "%" + namaMhs + "%");
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Model_Mahasiswa a = new Model_Mahasiswa();
-                a.setNim(rs.getString("nim"));
-                a.setNamaMhs(rs.getString("namaMhs"));
-                a.setGender(rs.getString("gender"));
-                a.setEmail(rs.getString("email"));
-                a.setKementerian(rs.getString("kementerian"));
-                a.setAlamat(rs.getString("alamat"));
-                listMhs.add(a);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ImplementDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        return listMhs;
-    }
+public java.util.List<Model_Mahasiswa> getCariAnggota(String keyword) {
+    java.util.List<Model_Mahasiswa> listMhs = null;
+    try {
+        listMhs = new ArrayList<>();
+        
+        PreparedStatement stmt = conn.prepareStatement(cari);
+        stmt.setString(1, "%" + keyword + "%");
+        stmt.setString(2, "%" + keyword + "%");
+        stmt.setString(3, "%" + keyword + "%");
+        stmt.setString(4, "%" + keyword + "%");
+        stmt.setString(5, "%" + keyword + "%");
+        stmt.setString(6, "%" + keyword + "%");
+        
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Model_Mahasiswa mahasiswa = new Model_Mahasiswa();
+            mahasiswa.setNim(rs.getString("nim"));
+            mahasiswa.setNamaMhs(rs.getString("namaMhs"));
+            mahasiswa.setGender(rs.getString("gender"));
+            mahasiswa.setEmail(rs.getString("email"));
+            mahasiswa.setKementerian(rs.getString("kementerian"));
+            mahasiswa.setAlamat(rs.getString("alamat"));
+            listMhs.add(mahasiswa);
+        }
+        
+        // Close resources
+        rs.close();
+        stmt.close();
+
+    } catch (SQLException ex) {
+        Logger.getLogger(ImplementDAO_Mahasiswa.class.getName()).log(Level.SEVERE, null, ex);
+    } 
+    return listMhs;
+}
+
     
     @Override
     public Model_Mahasiswa getByNim(String nim) {  // Metode baru untuk getByNim

@@ -331,7 +331,7 @@ public class Controller_Nilai {
     }
 
     public void isiTableCariNama() {
-        listNilai = implement_nilai.getCariNama(frame_nilai.getTxtCariData().getText());
+        listNilai = implement_nilai.getCari(frame_nilai.getTxtCariData().getText());
         ImplementDAO_Mahasiswa daoMahasiswa = new ImplementDAO_Mahasiswa();
         List<Model_Mahasiswa> mahasiswaList = daoMahasiswa.getAll();
 

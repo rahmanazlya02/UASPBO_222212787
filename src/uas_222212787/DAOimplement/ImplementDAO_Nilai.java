@@ -29,7 +29,14 @@ public class ImplementDAO_Nilai implements DAO_Nilai {
     final String select = "SELECT m.nim, m.namaMhs, m.kementerian, "
             + "n.kinerja, n.kehadiran, n.kreativitas, n.nilaiAkhir, n.katNilai "
             + "FROM mahasiswa m JOIN nilai n ON m.nim = n.nim;";
-    final String carinama = "SELECT n.*, m.namaMhs, m.kementerian FROM nilai n JOIN mahasiswa m ON n.nim = m.nim WHERE m.namaMhs LIKE ?";
+    final String cari = "SELECT n.*, m.namaMhs, m.kementerian "
+                     + "FROM nilai n JOIN mahasiswa m ON n.nim = m.nim "
+                     + "WHERE m.namaMhs LIKE ? "
+                     + "OR n.nim LIKE ? "
+                     + "OR m.kementerian LIKE ? "
+                     + "OR n.nilaiAkhir = ? "
+                     + "OR LOWER(n.katNilai) = LOWER(?)";
+
     
     public ImplementDAO_Nilai() {
         conn = Connection_db.getConnection();
@@ -94,10 +101,14 @@ public class ImplementDAO_Nilai implements DAO_Nilai {
 
     
     @Override
-    public List<Model_Nilai> getCariNama(String namaMhs) {
+    public List<Model_Nilai> getCari(String keyword) {
         List<Model_Nilai> listNilai = new ArrayList<>();
-        try (PreparedStatement stmt = conn.prepareStatement(carinama)) {
-            stmt.setString(1, "%" + namaMhs + "%");
+        try (PreparedStatement stmt = conn.prepareStatement(cari)) {
+            stmt.setString(1, "%" + keyword + "%");
+            stmt.setString(2, "%" + keyword + "%");
+            stmt.setString(3, "%" + keyword + "%");
+            stmt.setString(4,keyword);
+            stmt.setString(5,keyword.toLowerCase());
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     Model_Nilai n = new Model_Nilai();

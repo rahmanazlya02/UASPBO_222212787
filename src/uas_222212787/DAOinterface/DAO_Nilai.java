@@ -14,7 +14,7 @@ public interface DAO_Nilai {
     public void update(Model_Nilai n);
     
     public List<Model_Nilai> getAll();
-    public List<Model_Nilai> getCariNama(String namaMhs);
+    public List<Model_Nilai> getCari(String keyword);
     public Model_Nilai getNilaiByNim(String nim);
     public boolean isNilaiExist(String nim);
     public void deleteByNim(String nim);

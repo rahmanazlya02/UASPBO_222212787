@@ -299,14 +299,14 @@ public class Controller_Mahasiswa {
     
     //Mencari Data 
     public void isiTableCariNama() {
-        listMhs = implement_mahasiswa.getCariNama(frame_mahasiswa.getTxtCariData().getText());
+        listMhs = implement_mahasiswa.getCariAnggota(frame_mahasiswa.getTxtCariData().getText());
         Tabel_Model_Mahasiswa tmb = new Tabel_Model_Mahasiswa(listMhs);
         frame_mahasiswa.getMahasiswaTable().setModel(tmb);
     }
     
     public void carinama(){
         if(!frame_mahasiswa.getTxtCariData().getText().trim().isEmpty()) {
-            implement_mahasiswa.getCariNama(frame_mahasiswa.getTxtCariData().getText());
+            implement_mahasiswa.getCariAnggota(frame_mahasiswa.getTxtCariData().getText());
             isiTableCariNama();
         } else {
             JOptionPane.showMessageDialog(frame_mahasiswa, "Silahkan Pilih Data!");

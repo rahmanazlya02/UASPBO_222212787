@@ -16,7 +16,7 @@ public interface DAO_Mahasiswa {
     public void delete(String nim);
     
     public List<Model_Mahasiswa> getAll();
-    public List<Model_Mahasiswa> getCariNama(String namaMhs);
+    public List<Model_Mahasiswa> getCariAnggota(String namaMhs);
      public Model_Mahasiswa getByNim(String nim);  
     
 }
